@@ -78,12 +78,12 @@ public class AccountDaoImp implements AccountMapper {
     }
 
     @Override
-    public Account selectAccount(String id) {
+    public Account selectAccount(String openid) {
     	 Account result = null;
          SqlSession sqlSession = sqlSessionFactory.openSession();
          try {
              AccountMapper mapper = sqlSession.getMapper(AccountMapper.class);
-             result = mapper.selectAccount(id);
+             result = mapper.selectAccount(openid);
              sqlSession.commit();
          } catch (Exception e) {
              e.printStackTrace();
@@ -210,7 +210,17 @@ public class AccountDaoImp implements AccountMapper {
 	}
 	@Override
 	public Account selectByPrimaryKey(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+   	 Account result = null;
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        try {
+            AccountMapper mapper = sqlSession.getMapper(AccountMapper.class);
+            result = mapper.selectByPrimaryKey(id);
+            sqlSession.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            sqlSession.close();
+        }
+       return result;
 	}
 }

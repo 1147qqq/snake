@@ -21,7 +21,8 @@ public class InitServers {
 
         //===============================================================
         AccountService.getInstance().initSetSession(sessionFactory);
-        TaskTimer.headBag();
+		FriendsService.getInstance().initSetSession(sessionFactory);
+       // TaskTimer.headBag();
     }
 
     private static InitServers initServers = new InitServers();

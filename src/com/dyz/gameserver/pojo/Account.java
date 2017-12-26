@@ -1,22 +1,41 @@
 package com.dyz.gameserver.pojo;
 
 public class Account {
+		private int id;
+		//用户id
 		private int 	 uuid         ;
+		//唯一标识
 		private String    openid         ;
+		//昵称
 		private String    nickname       ;
-		private String    headIcon       ;
+		//头像地址
+		private String    headicon       ;
+		//性别
 		private int    sex            ;
+		//城市
 		private String    city           ;
+		//创建时间
 		private String    createtime     ;
+		//用户账号
 		private String    username       ;
+		//用户密码
 		private String    password       ;
+		//年龄
 		private int    age            ;
+		//魅力值
 		private int    charmnum       ;
+		//最佳分数
 		private int    maxachievement ;
+		//虚拟币数量
 		private int    money          ;
+		//等级
 		private int    grade          ;
+		//虚拟豆
 		private int    head           ;
+		//是否是机器人
 		private int    type           ;
+		
+		private boolean isfirend=false;
 		public int getUuid() {
 			return uuid;
 		}
@@ -35,11 +54,12 @@ public class Account {
 		public void setNickname(String nickname) {
 			this.nickname = nickname;
 		}
-		public String getHeadIcon() {
-			return headIcon;
+
+		public String getHeadicon() {
+			return headicon;
 		}
-		public void setHeadIcon(String headIcon) {
-			this.headIcon = headIcon;
+		public void setHeadicon(String headicon) {
+			this.headicon = headicon;
 		}
 		public int getSex() {
 			return sex;
@@ -113,5 +133,18 @@ public class Account {
 		public void setType(int type) {
 			this.type = type;
 		}
+		public int getId() {
+			return id;
+		}
+		public void setId(int id) {
+			this.id = id;
+		}
+		public boolean isIsfirend() {
+			return isfirend;
+		}
+		public void setIsfirend(boolean isfirend) {
+			this.isfirend = isfirend;
+		}
+		
 		
 }

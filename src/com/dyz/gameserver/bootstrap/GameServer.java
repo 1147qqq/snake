@@ -11,7 +11,6 @@ import com.dyz.gameserver.commons.session.GameSession;
 import com.dyz.gameserver.context.ExecutorServiceManager;
 import com.dyz.gameserver.manager.GameSessionManager;
 import com.dyz.gameserver.msg.response.common.CloseGameResponse;
-import com.dyz.gameserver.net.MinaHostMsgHandler;
 import com.dyz.gameserver.net.MinaMsgHandler;
 import com.dyz.gameserver.net.NetManager;
 import com.dyz.myBatis.services.InitServers;
@@ -21,7 +20,6 @@ public class GameServer {
 	private static final Logger logger = LoggerFactory.getLogger(GameServer.class);
 
 	private static int port = 10122;
-	private static int hostPort = 10123;
 	
 	private static GameServer instance=new GameServer();
 	
@@ -49,7 +47,6 @@ public class GameServer {
 			InitServers.getInstance().initServersFun();
 			logger.info("数据库连接初始化完成");
 			netManager.startListner(new MinaMsgHandler(), port);//前段监听端口
-			netManager.startHostListner(new MinaHostMsgHandler(),hostPort);//后台数据链接的时候再开一个listner
 			logger.info("服务器监听端口:{}完成",port);
 			logger.info("game server started...");
 			

@@ -29,9 +29,9 @@ public class TaskTimer {
                 if(gameSessionList != null){
                     for(int i=0;i<gameSessionList.size();i++){
                         gameSessionList.get(i).addTime(1);
-                        if(gameSessionList.get(i).getTime() > 15){
-                            gameSessionList.get(i).destroyObj();
-                            gameSessionList.get(i).sendMsg(new HeadResponse(1,"1"));
+                        if(gameSessionList.get(i).getTime() >=4){
+//                            gameSessionList.get(i).destroyObj();
+//                            gameSessionList.get(i).sendMsg(new HeadResponse(1,"1"));
                         }
                         else{
                         	try {
@@ -55,6 +55,6 @@ public class TaskTimer {
         Timer timer = new Timer();
         System.out.println(date);
         //20秒一次心跳包
-        timer.schedule(task, date,20000);
+        timer.schedule(task, date,2000);
     }
 }

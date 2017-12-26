@@ -74,6 +74,15 @@ public class AccountService {
         System.out.println("-account selectMaxId index->>" + index);
         return index;
     }
-     
+    
+    public Account selectByPrimaryKey(Integer id) throws SQLException{
+    	  try {
+              Account accounts = accMap.selectByPrimaryKey(id);
+                  return accounts;
+          }catch (Exception e){
+              e.printStackTrace();
+          }
+          return null;
+    }
     
 }

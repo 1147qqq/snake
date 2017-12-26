@@ -15,6 +15,9 @@ import com.dyz.myBatis.services.AccountService;
 import com.dyz.persist.util.JsonUtilTool;
 import com.dyz.persist.util.TimeUitl;
 import com.dyz.persist.util.TjUtil;
+import com.easemob.lmc.model.TalkNode;
+import com.easemob.lmc.service.TalkDataService;
+import com.easemob.lmc.service.impl.TalkDataServiceImpl;
 
 public class LoginMsgProcessor extends MsgProcessor implements INotAuthProcessor{
 
@@ -28,13 +31,22 @@ public class LoginMsgProcessor extends MsgProcessor implements INotAuthProcessor
 		account = AccountService.getInstance().selectAccount(loginVO.getOpenId());
 		if(account==null){
 			//创建新用户并登录
+			account=new Account();
 			account.setOpenid(loginVO.getOpenId());
 			account.setUuid(AccountService.getInstance().selectMaxId()+100000);
-			account.setHeadIcon(loginVO.getHeadIcon());
+			account.setHeadicon(loginVO.getHeadIcon());
 			account.setNickname(loginVO.getNickName());
 			account.setCity(loginVO.getCity());
 			account.setSex(loginVO.getSex());
-			account.setCreatetime(TjUtil.getCurrentDateTime());
+			account.setCreatetime(TjUtil.getCurrentDate());
+			TalkDataService talkDataService=null;
+			talkDataService=new TalkDataServiceImpl();
+			try {
+				talkDataService.userSave(account.getUuid()+"", "123456",loginVO.getNickName());
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			if(AccountService.getInstance().createAccount(account) == 0){
 				gameSession.sendMsg(new LoginResponse(0,null));
 				TimeUitl.delayDestroy(gameSession,1000);
@@ -46,9 +58,37 @@ public class LoginMsgProcessor extends MsgProcessor implements INotAuthProcessor
 				GameSessionManager.getInstance().putGameSessionInHashMap(gameSession,tempAva.getUuId());
 			}
 		}else{
-			Avatar tempAva=gameSession.getRole(Avatar.class);
-			loginAction(gameSession,tempAva);
-			System.out.println(account.getUuid()+"  :登录游戏");
+				//如果玩家是掉线的，则直接从缓存(GameServerContext)中取掉线玩家的信息
+				//判断用户是否已经进行断线处理(如果前端断线时间过短，后台则可能还未来得及把用户信息放入到离线map里面，就已经登录了，所以取出来就会是空)
+				Thread.sleep(500);
+				Avatar avatar = GameServerContext.getAvatarFromOn(account.getUuid());
+				if(avatar == null){
+					avatar =  GameServerContext.getAvatarFromOff(account.getUuid());
+				}
+				if(avatar == null){
+					GameSession gamesession = GameSessionManager.getInstance().getAvatarByUuid("uuid_"+account.getUuid());
+					if(gamesession != null){
+						avatar =  gamesession.getRole(Avatar.class);
+					}
+				}
+				if (avatar!=null) {
+					avatar.account=account;
+					avatar.setSession(gameSession);
+					//system.out.println("用户回来了，断线重连，中止计时器");
+					//返回用户断线前的房间信息******
+					gameSession.setLogin(true);
+					gameSession.setRole(avatar);
+					GameServerContext.add_onLine_Character(avatar);
+					GameServerContext.remove_offLine_Character(avatar);
+					gameSession.sendMsg(new LoginResponse(1,avatar.account));
+					//把session放入到GameSessionManager
+					GameSessionManager.getInstance().putGameSessionInHashMap(gameSession,avatar.getUuId());
+				}else {
+					avatar=new Avatar();
+					avatar.account=account;
+					loginAction(gameSession,avatar);
+					GameSessionManager.getInstance().putGameSessionInHashMap(gameSession,avatar.getUuId());
+				}
 		}
 	}
 

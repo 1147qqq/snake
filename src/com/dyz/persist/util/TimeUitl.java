@@ -70,7 +70,7 @@ public class TimeUitl {
      * @param obj
      * @return
      */
-    private static Timer getTimer(GameObj obj){
+    public static Timer getTimer(GameObj obj){
         return gameObjMap.get(obj);
     }
 }

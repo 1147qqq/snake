@@ -6,7 +6,7 @@ import com.dyz.gameserver.commons.session.GameSession;
 import com.dyz.gameserver.context.GameServerContext;
 import com.dyz.gameserver.manager.GameSessionManager;
 import com.dyz.gameserver.msg.processor.common.MsgProcessor;
-import com.dyz.myBatis.model.Account;
+import com.dyz.gameserver.pojo.Account;
 
 /**
  * 退出游戏

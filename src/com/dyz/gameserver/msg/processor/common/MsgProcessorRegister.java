@@ -1,8 +1,14 @@
 package com.dyz.gameserver.msg.processor.common;
 
 import com.context.ConnectAPI;
+import com.dyz.gameserver.msg.processor.Concern.ConcernMsgProcessor;
+import com.dyz.gameserver.msg.processor.GetFirent.GetFirentMsgProcessor;
+import com.dyz.gameserver.msg.processor.findUser.FindUserMsgProcessor;
 import com.dyz.gameserver.msg.processor.heartbeat.HeadMsgProcessor;
 import com.dyz.gameserver.msg.processor.login.LoginMsgProcessor;
+import com.dyz.gameserver.msg.processor.messageBox.MessageBoxMsgProcessor;
+import com.dyz.gameserver.msg.processor.result.ResultMsgProcessor;
+import com.dyz.gameserver.msg.processor.word.WordChatMsgProcessor;
 
 /**
  * 消息处理器注册类，所有的消息处理器，都在此注册实例化
@@ -13,6 +19,18 @@ import com.dyz.gameserver.msg.processor.login.LoginMsgProcessor;
 public enum MsgProcessorRegister {
 	/** 登陆处理器 */
 	login(ConnectAPI.LOGIN_REQUEST, new LoginMsgProcessor()),
+	/** 无尽模式成绩上传*/
+	result(ConnectAPI.Result_REQUEST, new ResultMsgProcessor()),
+	/** 查找用户*/
+	findUser(ConnectAPI.FindUser_REQUEST, new FindUserMsgProcessor()),
+	
+	messageBox(ConnectAPI.MessageBox_Request,new MessageBoxMsgProcessor()),
+	/** 关注 */
+	comcern(ConnectAPI.Concern_REQUEST, new ConcernMsgProcessor()),
+	
+	getFirent(ConnectAPI.GetFirent_REQUEST, new GetFirentMsgProcessor()),
+	/**发送世界消息 */
+	word(ConnectAPI.WorldChat_REQUEST, new WordChatMsgProcessor()),
 	/** 心跳协议 */
 	head(ConnectAPI.head, new HeadMsgProcessor());
 

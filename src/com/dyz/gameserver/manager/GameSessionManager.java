@@ -50,7 +50,6 @@ public class GameSessionManager {
             GameServerContext.add_onLine_Character(avatar);
             GameServerContext.remove_offLine_Character(avatar);
             TimeUitl.stopAndDestroyTimer(avatar);
-        	sessionMap.put("uuid_"+useId,gameSession);
         	//如果玩家在房间中 则需要给其他玩家发送在线消息
         }else{
         	//System.out.println("denglu");

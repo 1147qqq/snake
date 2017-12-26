@@ -23,6 +23,9 @@ public class GameSession implements GameObj {
 	 * IoSession
 	 */
 	private IoSession session;
+	
+	
+	private boolean close=false;
 	/**
 	 * 用户的服务器地址
 	 */
@@ -128,10 +131,12 @@ public class GameSession implements GameObj {
 				//GameSessionManager.getInstance().removeGameSession(avatar);
 				GameServerContext.add_offLine_Character(avatar);
 	        	GameServerContext.remove_onLine_Character(avatar);
-	        	GameSessionManager.getInstance().sessionMap.remove("uuid_"+avatar.getUuId());
+	        	GameSessionManager.getInstance().removeGameSession(avatar);
 //				avatar.avatarVO.setIsOnLine(false);
 				//把用户数据保留半个小时
-				TimeUitl.delayDestroy(avatar,30*60*1000);
+	        	if(TimeUitl.getTimer(avatar)==null){
+	        		TimeUitl.delayDestroy(avatar,30*60*1000);
+	        	}
 			}
 		}
 	}
@@ -146,7 +151,7 @@ public class GameSession implements GameObj {
 	
 	@Override
 	public void destroyObj() {
-		close();
+			close();
 	}
 
 	public int getTime() {
