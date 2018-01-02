@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dyz.myBatis.dao.ProductsMapper">
+	<select id="findAllproducts" resultType="com.dyz.gameserver.pojo.Products">
+		SELECT products.id as id, pname, pTypeid, num, money, bean, needGrade,
+		sold, imgurl, head, body
+		from products LEFT JOIN skin ON skin.productid=products.id
+	</select>
+</mapper>

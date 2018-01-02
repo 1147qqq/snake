@@ -34,6 +34,12 @@ public class ConnectAPI {
 	// 游戏关闭返回
 	public static int CLOSE_RESPONSE = 0x000000;
 	
+    public static int GetAllShop_REQUEST = 0x000014;//获取商店信息请求码
+    public static int GetAllShop_RESPONSE = 0x000015;//获取商店信息返回码
+    
+    public static int GetPaiHang_REQUEST = 0x001114;//获取排行请求
+    public static int GetPaiHang_RESPONSE = 0x001115;//获取排行返回码
+	
     public static int WorldChat_REQUEST = 0x00009;//发送世界信息请求码
     public static int WorldChat_RESPONSE = 0x000010; //接收世界信息返回码
     public static int MyWorldChat_RESPONSE = 0x000013; //发送世界信息返回码

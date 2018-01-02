@@ -22,6 +22,7 @@ public class InitServers {
         //===============================================================
         AccountService.getInstance().initSetSession(sessionFactory);
 		FriendsService.getInstance().initSetSession(sessionFactory);
+		ProductsService.getInstance().initSetSession(sessionFactory);
        // TaskTimer.headBag();
     }
 

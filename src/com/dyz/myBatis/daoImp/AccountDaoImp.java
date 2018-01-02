@@ -223,4 +223,21 @@ public class AccountDaoImp implements AccountMapper {
         }
        return result;
 	}
+	@Override
+	public List<Account> selectTopAccounts() {
+
+		List<Account> result = null;
+	        SqlSession sqlSession = sqlSessionFactory.openSession();
+	        try {
+	            AccountMapper mapper = sqlSession.getMapper(AccountMapper.class);
+	            result = mapper.selectTopAccounts();
+	            sqlSession.commit();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }finally {
+	            sqlSession.close();
+	        }
+	       return result;
+		
+	}
 }

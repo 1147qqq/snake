@@ -3,10 +3,12 @@ package com.dyz.gameserver.msg.processor.common;
 import com.context.ConnectAPI;
 import com.dyz.gameserver.msg.processor.Concern.ConcernMsgProcessor;
 import com.dyz.gameserver.msg.processor.GetFirent.GetFirentMsgProcessor;
+import com.dyz.gameserver.msg.processor.Ranking.RankingMsgProcessor;
 import com.dyz.gameserver.msg.processor.findUser.FindUserMsgProcessor;
 import com.dyz.gameserver.msg.processor.heartbeat.HeadMsgProcessor;
 import com.dyz.gameserver.msg.processor.login.LoginMsgProcessor;
 import com.dyz.gameserver.msg.processor.messageBox.MessageBoxMsgProcessor;
+import com.dyz.gameserver.msg.processor.product.ProductsMsgProcessor;
 import com.dyz.gameserver.msg.processor.result.ResultMsgProcessor;
 import com.dyz.gameserver.msg.processor.word.WordChatMsgProcessor;
 
@@ -25,8 +27,12 @@ public enum MsgProcessorRegister {
 	findUser(ConnectAPI.FindUser_REQUEST, new FindUserMsgProcessor()),
 	
 	messageBox(ConnectAPI.MessageBox_Request,new MessageBoxMsgProcessor()),
+	/** 商品获取*/
+	products(ConnectAPI.GetAllShop_REQUEST,new ProductsMsgProcessor()),
 	/** 关注 */
 	comcern(ConnectAPI.Concern_REQUEST, new ConcernMsgProcessor()),
+	/** 排行榜 */
+	ranking(ConnectAPI.GetPaiHang_REQUEST, new RankingMsgProcessor()),
 	
 	getFirent(ConnectAPI.GetFirent_REQUEST, new GetFirentMsgProcessor()),
 	/**发送世界消息 */

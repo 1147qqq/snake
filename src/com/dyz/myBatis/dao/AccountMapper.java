@@ -59,4 +59,11 @@ public interface AccountMapper {
      * @return
      */
     List<Account> selectAllAccounts();
+    
+    
+    /**
+     * 获取排行榜
+     * @return
+     */
+    List<Account> selectTopAccounts();
 }

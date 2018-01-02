@@ -84,5 +84,18 @@ public class AccountService {
           }
           return null;
     }
-    
+    /**
+     * 
+     * @param 查看排行榜
+     * @return account
+     */
+    public List<Account> selectTopAccounts() {
+        try {
+        	List<Account> accounts = accMap.selectTopAccounts();
+                return accounts;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
