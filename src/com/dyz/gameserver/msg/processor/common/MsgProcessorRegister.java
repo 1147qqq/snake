@@ -37,6 +37,8 @@ public enum MsgProcessorRegister {
 	getFirent(ConnectAPI.GetFirent_REQUEST, new GetFirentMsgProcessor()),
 	/**发送世界消息 */
 	word(ConnectAPI.WorldChat_REQUEST, new WordChatMsgProcessor()),
+	/**世界广播*/
+	wordradio(ConnectAPI.WORDRADIO_REQUEST, new WordChatMsgProcessor()),
 	/** 心跳协议 */
 	head(ConnectAPI.head, new HeadMsgProcessor());
 

@@ -29,6 +29,12 @@ public class ConnectAPI {
 	public static int head = 0x000030;
 	public static int headRESPONSE = 0x000031;
 	
+	//广播
+	public static int WORDRADIO_REQUEST = 0x000131;
+	public static int WORDRADIO_RESPONSE = 0x000132;
+	public static int MYWORDRADIO_RESPONSE = 0x000113; //发送世界信息返回码
+	
+	
 	// 游戏错误码返回
 	public static int ERROR_RESPONSE = 0xffff09;
 	// 游戏关闭返回
