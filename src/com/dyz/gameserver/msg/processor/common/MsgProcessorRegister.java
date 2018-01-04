@@ -3,6 +3,7 @@ package com.dyz.gameserver.msg.processor.common;
 import com.context.ConnectAPI;
 import com.dyz.gameserver.msg.processor.Concern.ConcernMsgProcessor;
 import com.dyz.gameserver.msg.processor.GetFirent.GetFirentMsgProcessor;
+import com.dyz.gameserver.msg.processor.NearUser.NearUserMsgProcessor;
 import com.dyz.gameserver.msg.processor.Ranking.RankingMsgProcessor;
 import com.dyz.gameserver.msg.processor.findUser.FindUserMsgProcessor;
 import com.dyz.gameserver.msg.processor.heartbeat.HeadMsgProcessor;
@@ -11,6 +12,8 @@ import com.dyz.gameserver.msg.processor.messageBox.MessageBoxMsgProcessor;
 import com.dyz.gameserver.msg.processor.product.ProductsMsgProcessor;
 import com.dyz.gameserver.msg.processor.result.ResultMsgProcessor;
 import com.dyz.gameserver.msg.processor.word.WordChatMsgProcessor;
+import com.dyz.gameserver.msg.processor.GetBackpack.BackpackMsgProcessor;
+import com.dyz.gameserver.msg.processor.BuyProduct.BuyProductMsgProcessor;
 
 /**
  * 消息处理器注册类，所有的消息处理器，都在此注册实例化
@@ -39,8 +42,18 @@ public enum MsgProcessorRegister {
 	word(ConnectAPI.WorldChat_REQUEST, new WordChatMsgProcessor()),
 	/**世界广播*/
 	wordradio(ConnectAPI.WORDRADIO_REQUEST, new WordChatMsgProcessor()),
+	/**附近的人*/
+	NearUser(ConnectAPI.NearUser_REQUEST, new NearUserMsgProcessor()),
+	
+	/**购买商品*/
+	buyProduct(ConnectAPI.InsertByUserBackpack_REQUEST, new BuyProductMsgProcessor()),
+	
+	/**获取背包*/
+	getBackpack(ConnectAPI.GetByUserBackpack_REQUEST, new BackpackMsgProcessor()),
 	/** 心跳协议 */
 	head(ConnectAPI.head, new HeadMsgProcessor());
+	
+	
 
 	private int msgCode;
 	private MsgProcessor processor;
