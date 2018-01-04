@@ -11,6 +11,8 @@ import com.dyz.gameserver.msg.processor.messageBox.MessageBoxMsgProcessor;
 import com.dyz.gameserver.msg.processor.product.ProductsMsgProcessor;
 import com.dyz.gameserver.msg.processor.result.ResultMsgProcessor;
 import com.dyz.gameserver.msg.processor.word.WordChatMsgProcessor;
+import com.dyz.gameserver.msg.processor.GetBackpack.BackpackMsgProcessor;
+import com.dyz.gameserver.msg.processor.BuyProduct.BuyProductMsgProcessor;
 
 /**
  * 消息处理器注册类，所有的消息处理器，都在此注册实例化
@@ -39,8 +41,16 @@ public enum MsgProcessorRegister {
 	word(ConnectAPI.WorldChat_REQUEST, new WordChatMsgProcessor()),
 	/**世界广播*/
 	wordradio(ConnectAPI.WORDRADIO_REQUEST, new WordChatMsgProcessor()),
+	
+	/**购买商品*/
+	buyProduct(ConnectAPI.InsertByUserBackpack_REQUEST, new BuyProductMsgProcessor()),
+	
+	/**获取背包*/
+	getBackpack(ConnectAPI.GetByUserBackpack_REQUEST, new BackpackMsgProcessor()),
 	/** 心跳协议 */
 	head(ConnectAPI.head, new HeadMsgProcessor());
+	
+	
 
 	private int msgCode;
 	private MsgProcessor processor;

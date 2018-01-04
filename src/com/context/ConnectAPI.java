@@ -49,6 +49,12 @@ public class ConnectAPI {
     public static int WorldChat_REQUEST = 0x00009;//发送世界信息请求码
     public static int WorldChat_RESPONSE = 0x000010; //接收世界信息返回码
     public static int MyWorldChat_RESPONSE = 0x000013; //发送世界信息返回码
+    
+    public static int GetByUserBackpack_REQUEST = 0x000119;//获取用户的背包信息请求吗
+    public static int GetByUserBackpack_RESPONSE = 0x000019;//获取用户的背包信息返回码
+    
+    public static int InsertByUserBackpack_REQUEST = 0x000120;//添加背包信息请求吗
+    public static int InsertByUserBackpack_RESPONSE = 0x000121;//添加背包信息返回码
 	
 	
 }
