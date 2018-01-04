@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import com.dyz.gameserver.pojo.Account;
 import com.dyz.myBatis.dao.AccountMapper;
 import com.dyz.myBatis.daoImp.AccountDaoImp;
+import com.dyz.persist.util.UrlUtil;
 
 /**
  * Created by kevin on 2016/6/21.

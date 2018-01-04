@@ -1,5 +1,8 @@
 package com.dyz.persist.util;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.List;
 
 import com.dyz.gameserver.pojo.AllProducts;
@@ -13,8 +16,14 @@ import com.easemob.lmc.service.impl.TalkHttpServiceImplApache;
 
 public class Test {
 public static void main(String[] args) { 
-	List<Products> products = ProductsService.getInstance().findAllproducts();
-	AllProducts allproeucts=new AllProducts();
-	allproeucts.setProducts(products);
+	  String str = "测试字符转换 hello word"; //默认环境，已是UTF-8编码
+      try {
+          String strGBK = URLEncoder.encode(str, "GBK");
+          System.out.println(strGBK);
+          String strUTF8 = URLDecoder.decode(str, "UTF-8");
+          System.out.println(strUTF8);
+      } catch (UnsupportedEncodingException e) {
+          e.printStackTrace();
+      }
 }
 }

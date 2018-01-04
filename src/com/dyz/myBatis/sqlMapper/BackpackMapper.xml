@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dyz.myBatis.dao.BackpackMapper">
+	<select id="selectByUUid" resultType="com.dyz.gameserver.pojo.Backpack">
+		SELECT pro.* FROM(SELECT products.id as id, pname, pTypeid, money, bean, 
+ imgurl,body,head
+		from products LEFT JOIN skin ON skin.productid=products.id) pro,backpack WHERE backpack.productid=pro.id AND backpack.uuid=#{uuid}
+	</select>
+	
+	<insert id="insertBackpack" parameterType="com.dyz.gameserver.pojo.BackpackEntity">
+		insert into backpack 
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="uuid != null">
+				uuid,
+			</if>
+			<if test="num != null">
+				num,
+			</if>
+			<if test="productid != null">
+				productid,
+			</if>
+		</trim>
+			<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="uuid != null">
+				#{uuid,jdbcType=INTEGER},
+			</if>
+			<if test="num != null">
+				#{num,jdbcType=INTEGER},
+			</if>
+			<if test="productid != null">
+				#{productid,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	
+</mapper>

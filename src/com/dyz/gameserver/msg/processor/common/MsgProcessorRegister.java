@@ -44,7 +44,6 @@ public enum MsgProcessorRegister {
 	wordradio(ConnectAPI.WORDRADIO_REQUEST, new WordChatMsgProcessor()),
 	/**附近的人*/
 	NearUser(ConnectAPI.NearUser_REQUEST, new NearUserMsgProcessor()),
-	
 	/**购买商品*/
 	buyProduct(ConnectAPI.InsertByUserBackpack_REQUEST, new BuyProductMsgProcessor()),
 	
