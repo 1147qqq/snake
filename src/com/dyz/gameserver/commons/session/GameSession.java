@@ -131,7 +131,7 @@ public class GameSession implements GameObj {
 				//GameSessionManager.getInstance().removeGameSession(avatar);
 				GameServerContext.add_offLine_Character(avatar);
 	        	GameServerContext.remove_onLine_Character(avatar);
-	        	GameSessionManager.getInstance().removeGameSession(avatar);
+	        	GameSessionManager.getInstance().sessionMap.remove("uuid_"+avatar.getUuId());
 //				avatar.avatarVO.setIsOnLine(false);
 				//把用户数据保留半个小时
 	        	if(TimeUitl.getTimer(avatar)==null){

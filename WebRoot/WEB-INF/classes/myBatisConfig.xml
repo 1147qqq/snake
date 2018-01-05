@@ -27,7 +27,7 @@
 			<dataSource type="POOLED">
 				<property name="driver" value="com.mysql.jdbc.Driver" />
 				<property name="url"
-					value="jdbc:mysql://192.168.1.103:3306/snake?zeroDateTimeBehavior=convertToNull" />
+					value="jdbc:mysql://localhost:3306/snake?zeroDateTimeBehavior=convertToNull" />
 				<property name="username" value="root" />
 				<property name="password" value="root" />
 			</dataSource>

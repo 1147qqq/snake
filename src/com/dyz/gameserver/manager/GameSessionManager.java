@@ -47,7 +47,9 @@ public class GameSessionManager {
         //System.out.println(" result ==> "+result);
         if(result){
             Avatar avatar = gameSession.getRole(Avatar.class);
-            GameServerContext.add_onLine_Character(avatar);
+            if (GameServerContext.getAvatarFromOn(avatar.getUuId())==null){
+            	GameServerContext.add_onLine_Character(avatar);
+			}
             GameServerContext.remove_offLine_Character(avatar);
             TimeUitl.stopAndDestroyTimer(avatar);
         	//如果玩家在房间中 则需要给其他玩家发送在线消息
