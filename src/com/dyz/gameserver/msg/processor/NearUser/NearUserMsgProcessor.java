@@ -23,14 +23,14 @@ public class NearUserMsgProcessor extends MsgProcessor implements INotAuthProces
     public void process(GameSession gameSession, ClientRequest request) throws Exception {
     	//获取传过来的经纬度
     	String message=request.getString();
+    	//从session 中获取个人信息
+    	Avatar avatar=gameSession.getRole(Avatar.class);
     	//转成对象
     	LanLin lanLin=JsonUtilTool.fromJson(message,LanLin.class);
     	//如果经纬度不存在 则直接返回
     	if (lanLin.getLatitude().equals("0")) {
 			return;
 		}
-    	//从session 中获取个人信息
-    	Avatar avatar=gameSession.getRole(Avatar.class);
     	//查看lbs 云存储中是否存在此用户
     	String uuid=avatar.getUuId()+"";
     	String content=UrlUtil.GET("http://api.map.baidu.com/geodata/v3/poi/list", "geotable_id=182444&ak=ZfnGskL9wTibnT8cfax0jtlKufLyuDka&coord_type=1&uuid="+uuid+","+uuid);

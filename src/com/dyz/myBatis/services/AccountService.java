@@ -99,4 +99,45 @@ public class AccountService {
         }
         return null;
     }
+    /**
+     * 修改人气
+     */
+    public void updateCharmnun() {
+        try {
+         accMap.updateCharmnun();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    /**
+     * 
+     * @param 查看昨日人气排行榜
+     * @return account
+     */
+    public List<Account> selectYesterdayCharmnumTopAccounts() {
+        try {
+        	List<Account> accounts = accMap.selectYesterdayCharmnumTopAccounts();
+                return accounts;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    /**
+     * 
+     * @param 查看今日人气排行榜
+     * @return account
+     */
+    public List<Account> selectToDayCharmnumTopAccounts() {
+        try {
+        	List<Account> accounts = accMap.selectToDayCharmnumTopAccounts();
+                return accounts;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
 }

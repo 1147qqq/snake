@@ -45,6 +45,7 @@ public class GameSession implements GameObj {
 	private static final AttributeKey KEY_PLAYER_SESSION = new AttributeKey(GameSession.class, "player.session");
 	
 	public GameSession(IoSession session){
+		System.out.println("我创建session了");
 		this.session = session;
 		this.session.setAttribute(KEY_PLAYER_SESSION, this);
 		SocketAddress socketaddress = session.getRemoteAddress();
@@ -60,6 +61,7 @@ public class GameSession implements GameObj {
 	 * @return
      */
 	public static GameSession getInstance(IoSession session) {
+		System.out.println("接受消息 获取Gamesession");
 		Object playerObj = session.getAttribute(KEY_PLAYER_SESSION);
 		session.getService().getManagedSessions();
 		return (GameSession) playerObj;

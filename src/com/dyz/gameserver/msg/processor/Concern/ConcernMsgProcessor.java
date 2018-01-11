@@ -17,6 +17,7 @@ public class ConcernMsgProcessor extends MsgProcessor implements INotAuthProcess
 	public  void process(GameSession gameSession, ClientRequest request)
 			throws Exception {
 		Avatar avatar=gameSession.getRole(Avatar.class);
+		Account acc=avatar.account;
 		int followeruuid=avatar.getUuId();
 		int Befolloweruuid=Integer.valueOf(request.getString());
 		FindUser finduser=new FindUser();
@@ -25,7 +26,9 @@ public class ConcernMsgProcessor extends MsgProcessor implements INotAuthProcess
 		finduser.setCreatetime(TjUtil.getCurrentDate());
 		FindUser findUser=FriendsService.getInstance().selectFindUserByBefolloweruuid(finduser);
 		if (findUser==null) {
+		acc.setToDayCharmnum(acc.getToDayCharmnum()+1);
 		FriendsService.getInstance().createFindUser(finduser);
+		AccountService.getInstance().updateByPrimaryKeySelective(acc);
 		}
 		Account account=AccountService.getInstance().selectByPrimaryKey(Befolloweruuid);
 		gameSession.sendMsg(new ConcernResponse(1, account));

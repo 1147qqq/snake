@@ -34,7 +34,10 @@ public class Account {
 		private int    head           ;
 		//是否是机器人
 		private int    type           ;
-		
+		//昨日人气
+		private int YesterdayCharmnum;
+		//今天日期
+		private int ToDayCharmnum;
 		private boolean isfirend=false;
 		public int getUuid() {
 			return uuid;
@@ -144,6 +147,18 @@ public class Account {
 		}
 		public void setIsfirend(boolean isfirend) {
 			this.isfirend = isfirend;
+		}
+		public int getYesterdayCharmnum() {
+			return YesterdayCharmnum;
+		}
+		public void setYesterdayCharmnum(int yesterdayCharmnum) {
+			YesterdayCharmnum = yesterdayCharmnum;
+		}
+		public int getToDayCharmnum() {
+			return ToDayCharmnum;
+		}
+		public void setToDayCharmnum(int toDayCharmnum) {
+			ToDayCharmnum = toDayCharmnum;
 		}
 		
 		

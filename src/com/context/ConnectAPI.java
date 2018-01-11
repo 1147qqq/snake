@@ -59,6 +59,9 @@ public class ConnectAPI {
     
     public static int InsertByUserBackpack_REQUEST = 0x000120;//添加背包信息请求吗
     public static int InsertByUserBackpack_RESPONSE = 0x000121;//添加背包信息返回码
+    
+    public static int GetCharmRank_REQUEST = 0x00020;//获取人气排行版请求码
+    public static int GetCharmRank_RESPONSE = 0x000021;//获取人气排行版返回码
 	
 	
 }

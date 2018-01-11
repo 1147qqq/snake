@@ -66,4 +66,22 @@ public interface AccountMapper {
      * @return
      */
     List<Account> selectTopAccounts();
+    
+    /**
+     * 修改人气
+     */
+    void updateCharmnun();
+    /**
+     * 昨日人气
+     * @return
+     */
+    List<Account> selectYesterdayCharmnumTopAccounts();
+    
+    /**
+     * 今日人气
+     * @return
+     */
+    List<Account> selectToDayCharmnumTopAccounts();
+    
+    
 }

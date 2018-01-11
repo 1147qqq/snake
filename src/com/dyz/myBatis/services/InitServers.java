@@ -25,7 +25,7 @@ public class InitServers {
         ProductflowService.getInstance().initSetSession(sessionFactory);
 		FriendsService.getInstance().initSetSession(sessionFactory);
 		ProductsService.getInstance().initSetSession(sessionFactory);
-       // TaskTimer.headBag();
+        TaskTimer.charnum();
     }
 
     private static InitServers initServers = new InitServers();

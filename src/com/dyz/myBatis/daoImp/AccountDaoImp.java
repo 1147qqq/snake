@@ -240,4 +240,47 @@ public class AccountDaoImp implements AccountMapper {
 	       return result;
 		
 	}
+	@Override
+	public void updateCharmnun() {
+	        SqlSession sqlSession = sqlSessionFactory.openSession();
+	        try {
+	            AccountMapper mapper = sqlSession.getMapper(AccountMapper.class);
+	            mapper.updateCharmnun();
+	            sqlSession.commit();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }finally {
+	            sqlSession.close();
+	        }
+	}
+	@Override
+	public List<Account> selectYesterdayCharmnumTopAccounts() {
+		List<Account> result = null;
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        try {
+            AccountMapper mapper = sqlSession.getMapper(AccountMapper.class);
+            result = mapper.selectYesterdayCharmnumTopAccounts();
+            sqlSession.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            sqlSession.close();
+        }
+       return result;
+	}
+	@Override
+	public List<Account> selectToDayCharmnumTopAccounts() {
+		List<Account> result = null;
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        try {
+            AccountMapper mapper = sqlSession.getMapper(AccountMapper.class);
+            result = mapper.selectToDayCharmnumTopAccounts();
+            sqlSession.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            sqlSession.close();
+        }
+       return result;
+	}
 }
