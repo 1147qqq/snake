@@ -81,7 +81,7 @@ public class GameSessionManager {
      * @return
      */
     public GameSession getAvatarByUuid(String uuid){
-        return sessionMap.get(uuid);
+        return sessionMap.get("uuid_"+uuid);
     }
     /**
      *

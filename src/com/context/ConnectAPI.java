@@ -62,6 +62,9 @@ public class ConnectAPI {
     
     public static int GetCharmRank_REQUEST = 0x00020;//获取人气排行版请求码
     public static int GetCharmRank_RESPONSE = 0x000021;//获取人气排行版返回码
+    
+    public static int CHONGZHI_REQUEST = 0x158888;//获取人气排行版请求码
+    public static int CHONGZHI_RESPONSE = 0x158889;//获取人气排行版返回码
 	
 	
 }

@@ -16,7 +16,7 @@ import com.dyz.gameserver.msg.processor.product.ProductsMsgProcessor;
 import com.dyz.gameserver.msg.processor.result.ResultMsgProcessor;
 import com.dyz.gameserver.msg.processor.word.WordChatMsgProcessor;
 import com.dyz.gameserver.msg.processor.wordradio.WordRadioChatMsgProcessor;
-
+import com.dyz.gameserver.msg.processor.chongzhi.ChongZhiMsgProcessor;
 /**
  * 消息处理器注册类，所有的消息处理器，都在此注册实例化
  * 
@@ -52,6 +52,8 @@ public enum MsgProcessorRegister {
 	chramnun(ConnectAPI.GetCharmRank_REQUEST, new GetTopMsgProcessor()),
 	/**获取背包*/
 	getBackpack(ConnectAPI.GetByUserBackpack_REQUEST, new BackpackMsgProcessor()),
+	/**充值*/
+	chongzhi(ConnectAPI.CHONGZHI_REQUEST, new ChongZhiMsgProcessor()),
 	/** 心跳协议 */
 	head(ConnectAPI.head, new HeadMsgProcessor());
 	

@@ -16,7 +16,7 @@
 
 		<!-- !!!! Database Configurations !!!! -->
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://localhost:3306/snake" userId="root"
+			connectionURL="jdbc:mysql://118.31.2.54:3306/snake" userId="root"
 			password="root" />
 
 		<javaTypeResolver>
