@@ -14,8 +14,9 @@ public class ChongZhiMsgProcessor extends MsgProcessor implements INotAuthProces
 		String msg=request.getString();
 		String []msgs=msg.split(":");
 		int uuid=Integer.valueOf(msgs[0]);
-		GameSession gameSession2=GameSessionManager.getInstance().getAvatarByUuid(uuid+"");
-		gameSession2.sendMsg(new ChongZhiResponse(1, msgs[1]));
+		System.out.println(msgs[1]+"充值");
+		/*GameSession gameSession2=GameSessionManager.getInstance().getAvatarByUuid(uuid+"");*/
+		gameSession.sendMsg(new ChongZhiResponse(1, msgs[1]));
 	}
 	
 }
