@@ -140,4 +140,19 @@ public class AccountService {
         return null;
     }
     
+      /**
+     * 保存邀请码
+     * @param account
+     * @return
+     */
+    public  int updateInviteCode(Account account) {
+    	   int index = 0;
+           try{
+               index = accMap.updateInviteCode(account);
+           }catch (Exception e){
+               System.out.println(e.getMessage());
+           }
+   		return index;
+       }
+    
 }

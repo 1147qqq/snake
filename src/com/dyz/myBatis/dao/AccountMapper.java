@@ -83,5 +83,12 @@ public interface AccountMapper {
      */
     List<Account> selectToDayCharmnumTopAccounts();
     
+    /**
+     * 保存邀请码
+     * @param account
+     * @return
+     */
+    int updateInviteCode(Account account);
+    
     
 }

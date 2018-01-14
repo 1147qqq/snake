@@ -8,6 +8,8 @@ import com.dyz.gameserver.msg.processor.GetFirent.GetFirentMsgProcessor;
 import com.dyz.gameserver.msg.processor.GetTop.GetTopMsgProcessor;
 import com.dyz.gameserver.msg.processor.NearUser.NearUserMsgProcessor;
 import com.dyz.gameserver.msg.processor.Ranking.RankingMsgProcessor;
+import com.dyz.gameserver.msg.processor.RegisterCode.RegisterCodeProcessor;
+import com.dyz.gameserver.msg.processor.chongzhi.ChongZhiMsgProcessor;
 import com.dyz.gameserver.msg.processor.findUser.FindUserMsgProcessor;
 import com.dyz.gameserver.msg.processor.heartbeat.HeadMsgProcessor;
 import com.dyz.gameserver.msg.processor.login.LoginMsgProcessor;
@@ -16,7 +18,6 @@ import com.dyz.gameserver.msg.processor.product.ProductsMsgProcessor;
 import com.dyz.gameserver.msg.processor.result.ResultMsgProcessor;
 import com.dyz.gameserver.msg.processor.word.WordChatMsgProcessor;
 import com.dyz.gameserver.msg.processor.wordradio.WordRadioChatMsgProcessor;
-import com.dyz.gameserver.msg.processor.chongzhi.ChongZhiMsgProcessor;
 /**
  * 消息处理器注册类，所有的消息处理器，都在此注册实例化
  * 
@@ -38,7 +39,7 @@ public enum MsgProcessorRegister {
 	comcern(ConnectAPI.Concern_REQUEST, new ConcernMsgProcessor()),
 	/** 排行榜 */
 	ranking(ConnectAPI.GetPaiHang_REQUEST, new RankingMsgProcessor()),
-	
+	/**获取好友*/
 	getFirent(ConnectAPI.GetFirent_REQUEST, new GetFirentMsgProcessor()),
 	/**发送世界消息 */
 	word(ConnectAPI.WorldChat_REQUEST, new WordChatMsgProcessor()),
@@ -54,6 +55,9 @@ public enum MsgProcessorRegister {
 	getBackpack(ConnectAPI.GetByUserBackpack_REQUEST, new BackpackMsgProcessor()),
 	/**充值*/
 	chongzhi(ConnectAPI.CHONGZHI_REQUEST, new ChongZhiMsgProcessor()),
+	/**注册填写邀请码*/
+	registerCode(ConnectAPI.RegisterCode_REQUEST, new RegisterCodeProcessor()),
+	
 	/** 心跳协议 */
 	head(ConnectAPI.head, new HeadMsgProcessor());
 	
@@ -90,4 +94,5 @@ public enum MsgProcessorRegister {
 	public MsgProcessor getMsgProcessor() {
 		return this.processor;
 	}
+
 }

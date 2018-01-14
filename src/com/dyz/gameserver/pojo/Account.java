@@ -38,7 +38,18 @@ public class Account {
 		private int YesterdayCharmnum;
 		//今天日期
 		private int ToDayCharmnum;
+		
 		private boolean isfirend=false;
+		//邀请码
+		private String inviteCode;
+		
+		
+		public String getInviteCode() {
+			return inviteCode;
+		}
+		public void setInviteCode(String inviteCode) {
+			this.inviteCode = inviteCode;
+		}
 		public int getUuid() {
 			return uuid;
 		}
@@ -160,6 +171,8 @@ public class Account {
 		public void setToDayCharmnum(int toDayCharmnum) {
 			ToDayCharmnum = toDayCharmnum;
 		}
+		
+		
 		
 		
 }

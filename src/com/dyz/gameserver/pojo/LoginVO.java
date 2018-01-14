@@ -24,8 +24,20 @@ public class LoginVO {
     private String longitude;
     //维度
     private String latitude;
+    
+    private String inviteCode;
+    
+    
 
-    public String getOpenId() {
+    public String getInviteCode() {
+		return inviteCode;
+	}
+
+	public void setInviteCode(String inviteCode) {
+		this.inviteCode = inviteCode;
+	}
+
+	public String getOpenId() {
         return openId;
     }
 

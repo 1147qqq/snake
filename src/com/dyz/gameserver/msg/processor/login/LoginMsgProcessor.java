@@ -39,6 +39,7 @@ public class LoginMsgProcessor extends MsgProcessor implements INotAuthProcessor
 			account.setCity(loginVO.getCity());
 			account.setSex(loginVO.getSex());
 			account.setCreatetime(TjUtil.getCurrentDate());
+			account.setInviteCode(loginVO.getInviteCode());
 			TalkDataService talkDataService=null;
 			talkDataService=new TalkDataServiceImpl();
 			try {

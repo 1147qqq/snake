@@ -190,7 +190,7 @@
 			MyBatis Generator, do not modify. private Integer managerUpId,actualcard,totalcard,createtime,lastlogintime,status; -->
 		id, uuid, openid, nickname, headicon, sex, city, createtime,
 		username, password, age, charmnum, maxachievement,money,
-		grade, head, type,YesterdayCharmnum,ToDayCharmnum
+		grade, head, type,YesterdayCharmnum,ToDayCharmnum,inviteCode
 	</sql>
 	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
 		resultType="com.dyz.gameserver.pojo.Account">
@@ -230,5 +230,13 @@
 	<update id="updateCharmnun">
 	update account SET charmnum=charmnum+ToDayCharmnum ,YesterdayCharmnum=ToDayCharmnum,ToDayCharmnum=0
 	</update>
+	
+	<update id="updateInviteCode" parameterType="com.dyz.gameserver.pojo.Account">
+		update account set inviteCode=#{inviteCode} where uuid=#{uuid}
+	</update>
+	
+	
+	
+	
 	
 </mapper>

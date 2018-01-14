@@ -65,6 +65,9 @@ public class ConnectAPI {
     
     public static int CHONGZHI_REQUEST = 0x158888;//充值成功请求码
     public static int CHONGZHI_RESPONSE = 0x158889;//充值返回码
+    
+    public static int RegisterCode_REQUEST = 0x179998;//注册邀请码请求吗
+    public static int RegisterCode_RESPONSE = 0x179999;//注册邀请码返回码
 	
 	
 }

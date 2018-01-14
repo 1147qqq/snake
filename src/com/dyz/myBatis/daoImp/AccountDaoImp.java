@@ -283,4 +283,21 @@ public class AccountDaoImp implements AccountMapper {
         }
        return result;
 	}
+	@Override
+	public int updateInviteCode(Account account) {
+		  int flag = 0;
+	        SqlSession sqlSession = sqlSessionFactory.openSession();
+	        AccountMapper mapper = null;
+	        try{
+	            mapper = sqlSession.getMapper(AccountMapper.class);
+	            flag = mapper.updateInviteCode(account);
+	            sqlSession.commit();
+	        }catch (Exception e) {
+	            e.printStackTrace();
+	            //昵称出问题
+	        }finally {
+	            sqlSession.close();
+	        }
+	        return flag;
+	    }
 }

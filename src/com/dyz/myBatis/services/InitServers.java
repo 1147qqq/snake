@@ -25,6 +25,7 @@ public class InitServers {
         ProductflowService.getInstance().initSetSession(sessionFactory);
 		FriendsService.getInstance().initSetSession(sessionFactory);
 		ProductsService.getInstance().initSetSession(sessionFactory);
+		ManagerService.getInstance().initSetSession(sessionFactory);
         TaskTimer.charnum();
     }
 
